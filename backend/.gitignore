@@ -1,0 +1,61 @@
+# ==========================================
+# Backend Specific .gitignore
+# ==========================================
+
+# CRITICAL: Environment Variables and Secrets
+.env
+.env.*
+.env.local
+.env.development
+.env.test
+.env.production
+*.env
+
+# Configuration files with sensitive data
+config.local.py
+secrets.json
+credentials.json
+*_secret.py
+*_secrets.py
+
+# Python Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+virtualenv/
+
+# Python Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Backup files
+*.bak
+*.backup
+*_backup.*
+

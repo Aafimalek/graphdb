@@ -1,0 +1,383 @@
+# ==========================================
+# Graph Q&A Project - Comprehensive .gitignore
+# ==========================================
+
+# =============================================================================
+# SENSITIVE & ENVIRONMENT FILES - DO NOT COMMIT
+# =============================================================================
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.*.local
+*.env
+**/backend/.env
+**/backend/.env.*
+config.local.py
+secrets.json
+credentials.json
+
+# =============================================================================
+# PYTHON / BACKEND
+# =============================================================================
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+pythonenv/
+.python-version
+
+# Python Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Distribution / Packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit Test / Coverage
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+.idea_modules/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# =============================================================================
+# NODE.JS / FRONTEND
+# =============================================================================
+
+# Dependencies
+node_modules/
+jspm_packages/
+
+# Production build files
+dist/
+dist-ssr/
+build/
+.next/
+out/
+.nuxt
+.cache
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Testing
+coverage/
+.nyc_output
+*.lcov
+
+# Misc
+.DS_Store
+*.pem
+.env*.local
+
+# Vercel
+.vercel
+
+# Vite
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# =============================================================================
+# DATABASE & DATA FILES
+# =============================================================================
+
+# Neo4j
+*.db
+*.db.lock
+graph.db/
+neo4j/data/
+neo4j/logs/
+
+# SQLite
+*.sqlite
+*.sqlite3
+*.db
+
+# Database dumps
+*.sql
+*.dump
+
+# =============================================================================
+# EXPORTED FILES & GENERATED CONTENT
+# =============================================================================
+
+# Exported conversation history (user-generated)
+qa-history-*.json
+qa-history-*.pdf
+qa-history-*.md
+**/exports/
+**/downloads/
+
+# Generated documentation
+docs/_build/
+site/
+
+# =============================================================================
+# IDE & EDITOR FILES
+# =============================================================================
+
+# Visual Studio Code
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+*.code-workspace
+
+# JetBrains IDEs (PyCharm, WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+*.iws
+.idea_modules/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+.vim/
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Eclipse
+.project
+.metadata
+.classpath
+.settings/
+bin/
+
+# =============================================================================
+# OPERATING SYSTEM FILES
+# =============================================================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =============================================================================
+# TEMPORARY & CACHE FILES
+# =============================================================================
+
+# General temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+.cache/
+tmp/
+temp/
+
+# Logs
+*.log
+log/
+logs/
+
+# =============================================================================
+# DOCKER
+# =============================================================================
+docker-compose.override.yml
+.docker/
+
+# =============================================================================
+# CLOUD & DEPLOYMENT
+# =============================================================================
+
+# AWS
+.aws/
+*.pem
+
+# Google Cloud
+.gcloud/
+gcloud/
+
+# Heroku
+.heroku/
+
+# Netlify
+.netlify/
+
+# =============================================================================
+# DEPENDENCIES & LOCK FILES (Optional - Uncomment if needed)
+# =============================================================================
+
+# Uncomment these if you want to ignore lock files
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+# poetry.lock
+# Pipfile.lock
+
+# =============================================================================
+# BACKUP & ARCHIVE FILES
+# =============================================================================
+
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+*_backup.*
+*_old.*
+*.backup
+
+# =============================================================================
+# EXPERIMENTS & PERSONAL NOTES
+# =============================================================================
+
+experiments/
+scratch/
+notes.txt
+TODO.txt
+*.draft
+
+# =============================================================================
+# PROJECT SPECIFIC
+# =============================================================================
+
+# Local development overrides
+*.local.*
+local/
+.local/
+
+# Test data
+test-data/
+sample-data/
+mock-data/
+
+# Screenshots and media (if not needed in repo)
+screenshots/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.mp4
+*.mov
+
+# API keys and tokens (just in case)
+*apikey*
+*token*
+*secret*
+*password*
+
+# =============================================================================
+# END OF .GITIGNORE
+# =============================================================================
+
