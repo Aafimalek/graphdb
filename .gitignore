@@ -78,8 +78,7 @@ coverage.xml
 cover/
 
 # Jupyter Notebook
-.ipynb_checkpoints
-*.ipynb
+
 
 # PyCharm
 .idea/
