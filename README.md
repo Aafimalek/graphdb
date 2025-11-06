@@ -59,7 +59,7 @@ The app comes with intelligent sample questions that adapt to your database:
 ```
 ┌─────────────────────┐                           ┌─────────────────────┐
 │   React Frontend    │      HTTP/REST API        │   FastAPI Backend   │
-│   (Vite + React)    │ ◄─────────────────────► │   (Python + async)  │
+│   (Vite + React)    │ ◄─────────────────────►   │   (Python + async)  │
 │                     │                           │                     │
 │  • Modern UI/UX     │                           │  • LangChain        │
 │  • State Management │                           │  • Pydantic         │
@@ -85,24 +85,24 @@ The app comes with intelligent sample questions that adapt to your database:
 ## 🛠️ Tech Stack
 
 ### Backend
-- **FastAPI** `^0.109` - Modern, high-performance async web framework
-- **LangChain** `^0.1` - LLM orchestration and chaining
-- **LangChain-Neo4j** `^0.1` - Neo4j integration for LangChain
-- **LangChain-Groq** `^0.1` - Groq LLM provider integration
-- **Uvicorn** `^0.27` - Lightning-fast ASGI server
-- **Pydantic** `^2.0` - Data validation using Python type annotations
-- **Python-dotenv** `^1.0` - Environment variable management
+- **FastAPI**  - Modern, high-performance async web framework
+- **LangChain**  - LLM orchestration and chaining
+- **LangChain-Neo4j**  - Neo4j integration for LangChain
+- **LangChain-Groq**  - Groq LLM provider integration
+- **Uvicorn**  - Lightning-fast ASGI server
+- **Pydantic**  - Data validation using Python type annotations
+- **Python-dotenv**  - Environment variable management
 
 ### Frontend
-- **React** `19.1.1` - UI library with latest concurrent features
-- **Vite** `7.1.7` - Next-generation frontend build tool
-- **Tailwind CSS** `4.1.17` - Utility-first CSS framework
-- **vis-network** `10.0.2` - Network visualization library
-- **jsPDF** `3.0.3` - Client-side PDF generation
+- **React**  - UI library with latest concurrent features
+- **Vite**  - Next-generation frontend build tool
+- **Tailwind CSS**  - Utility-first CSS framework
+- **vis-network**  - Network visualization library
+- **jsPDF**  - Client-side PDF generation
 - **Custom React Hooks** - useLocalStorage, useKeyboard
 
 ### Database & AI
-- **Neo4j** `5.x` - Graph database (local or Aura cloud)
+- **Neo4j**  - Graph database (local or Aura cloud)
 - **Groq API** - Fast LLM inference (Llama 3 models)
 
 ## 📋 Prerequisites
@@ -131,7 +131,7 @@ Before you begin, ensure you have:
 ### Step 1: Clone the Repository
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/Aafimalek/graphdb
 cd graphdb
 ```
 
@@ -143,14 +143,6 @@ cd graphdb
 # Install all Python dependencies from root
 pip install -r requirements.txt
 ```
-
-The `requirements.txt` includes:
-- `fastapi` - Web framework
-- `uvicorn[standard]` - ASGI server
-- `python-dotenv` - Environment variables
-- `langchain` - LLM framework
-- `langchain-neo4j` - Neo4j integration
-- `langchain_groq` - Groq LLM provider
 
 #### 2.2 Configure Environment Variables
 
@@ -562,25 +554,6 @@ graphdb/
 └── .gitignore             # Git ignore rules
 ```
 
-### Key Files Explained
-
-#### Backend Files
-- **`main.py`**: FastAPI application with endpoints, CORS, and lifespan management
-- **`services.py`**: Core logic - GraphQAService class that handles Neo4j, LLM, and query processing
-- **`config.py`**: Pydantic settings for type-safe configuration from environment variables
-
-#### Frontend Files
-- **`App.jsx`**: Main React component with state management and UI logic
-- **`components/`**: Reusable UI components for modular design
-- **`hooks/`**: Custom React hooks for state persistence and keyboard shortcuts
-- **`utils/exportUtils.js`**: Export functionality for JSON, Markdown, and PDF
-
-#### Configuration Files
-- **`requirements.txt`**: Python package dependencies
-- **`package.json`**: Node.js dependencies and scripts
-- **`vite.config.js`**: Vite build configuration with React and Tailwind plugins
-- **`.env`**: Environment variables (must be created from `env.example`)
-
 ## 🐛 Troubleshooting
 
 ### Backend Issues
@@ -755,217 +728,6 @@ npm install -D @tailwindcss/vite
 // Or manually in browser console:
 localStorage.clear();
 ```
-
-## 🔧 Development
-
-### Code Style & Linting
-
-#### Backend (Python)
-```bash
-# Install dev tools
-pip install black flake8 mypy
-
-# Format code
-black backend/
-
-# Lint code
-flake8 backend/ --max-line-length=120
-
-# Type check
-mypy backend/
-```
-
-#### Frontend (JavaScript)
-```bash
-# Lint code
-cd frontend
-npm run lint
-
-# Auto-fix issues
-npm run lint -- --fix
-```
-
-### Environment Management
-
-#### Development
-```env
-# backend/.env
-NEO4J_URI=bolt://localhost:7687
-GROQ_MODEL=llama3-8b-8192  # Faster for dev
-```
-
-#### Production
-```env
-# backend/.env
-NEO4J_URI=neo4j+s://prod.databases.neo4j.io
-GROQ_MODEL=llama3-70b-8192  # More accurate
-```
-
-### Building for Production
-
-#### Frontend Build
-```bash
-cd frontend
-npm run build
-# Output in dist/ directory
-
-# Preview production build
-npm run preview
-```
-
-#### Backend Deployment
-```bash
-# Install production ASGI server
-pip install gunicorn
-
-# Run with Gunicorn
-gunicorn backend.main:app \
-  --workers 4 \
-  --worker-class uvicorn.workers.UvicornWorker \
-  --bind 0.0.0.0:8000
-```
-
-### Testing
-
-Currently, the project doesn't include automated tests. To add tests:
-
-#### Backend Testing Setup
-```bash
-pip install pytest pytest-asyncio httpx
-
-# Create backend/tests/test_main.py
-# Run tests
-pytest backend/tests/
-```
-
-#### Frontend Testing Setup
-```bash
-cd frontend
-npm install -D vitest @testing-library/react
-
-# Create tests in src/__tests__/
-# Run tests
-npm test
-```
-
-## 🚀 Deployment
-
-### Docker Deployment
-
-Create `Dockerfile` in `backend/`:
-```dockerfile
-FROM python:3.11-slim
-
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY backend/ .
-EXPOSE 8000
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
-```
-
-Create `Dockerfile` in `frontend/`:
-```dockerfile
-FROM node:20-alpine as build
-
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci
-
-COPY . .
-RUN npm run build
-
-FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
-EXPOSE 80
-```
-
-Create `docker-compose.yml` in root:
-```yaml
-version: '3.8'
-services:
-  backend:
-    build: ./backend
-    ports:
-      - "8000:8000"
-    env_file:
-      - backend/.env
-    restart: unless-stopped
-  
-  frontend:
-    build: ./frontend
-    ports:
-      - "80:80"
-    depends_on:
-      - backend
-    restart: unless-stopped
-```
-
-Run with Docker:
-```bash
-docker-compose up -d
-```
-
-### Cloud Deployment Options
-
-#### Backend Options
-- **Railway**: Push-to-deploy with free tier
-- **Render**: Free tier available, auto-deploy from Git
-- **Fly.io**: Global edge deployment
-- **AWS Lambda**: Serverless with Mangum adapter
-- **Heroku**: Classic PaaS (paid)
-
-#### Frontend Options
-- **Vercel**: Best for Next.js/Vite, free tier
-- **Netlify**: Drag-and-drop deployment, free tier
-- **GitHub Pages**: Free static hosting
-- **Cloudflare Pages**: Fast global CDN, free tier
-
-#### Database Options
-- **Neo4j Aura**: Managed Neo4j cloud, free tier available
-- **Self-hosted**: Docker container on any VPS
-
-### Environment Variables for Production
-
-Set these in your deployment platform:
-
-```env
-# Backend
-NEO4J_URI=neo4j+s://prod.databases.neo4j.io
-NEO4J_USERNAME=neo4j
-NEO4J_PASSWORD=<secure_password>
-NEO4J_DATABASE=neo4j
-GROQ_API_KEY=<your_api_key>
-GROQ_MODEL=llama3-70b-8192
-
-# Frontend (build-time)
-VITE_API_URL=https://your-backend.com
-```
-
-## 🎯 Future Enhancements
-
-### Planned Features
-- [ ] **Authentication**: User accounts with JWT tokens
-- [ ] **Multi-database**: Switch between different Neo4j databases
-- [ ] **Query Builder**: Visual Cypher query builder
-- [ ] **Schema Editor**: Upload/edit custom schemas
-- [ ] **Voice Input**: Speech-to-text for questions
-- [ ] **Collaborative**: Share conversations with others
-- [ ] **Analytics Dashboard**: Query patterns and usage stats
-- [ ] **Advanced Export**: Excel, CSV formats
-- [ ] **Themes**: Light mode and custom color schemes
-- [ ] **API Keys**: User-specific API key management
-
-### Long-term Vision
-- [ ] **Multi-language**: Internationalization (i18n)
-- [ ] **Mobile App**: React Native version
-- [ ] **Webhooks**: Integration with external systems
-- [ ] **Scheduled Queries**: Automated reports
-- [ ] **Query Optimization**: Suggest better Cypher queries
-- [ ] **Custom LLMs**: Support for local models (Ollama)
-- [ ] **Graph Editing**: Modify database from UI
-- [ ] **Plugin System**: Extensible architecture
 
 ## 🤝 Contributing
 
